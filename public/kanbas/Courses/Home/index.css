@@ -1,0 +1,31 @@
+.wd-home{
+    list-style: none;
+    margin-left: 20px;
+}
+.wd-home li{
+    margin-left: 20px;
+}
+
+.wd-top{
+    margin-top: 80px;
+}
+.wd-breadcrumb{
+    margin-left:100px ;
+    margin-top: 10px;
+    width: 100%;
+    position: absolute;
+}
+
+.wd-home i{
+    color: black;
+}
+
+.wd-home a{
+    color: red;
+    text-decoration: none;
+}
+
+.wd-home button{
+    background-color: rgb(197, 176, 176);
+    
+}

@@ -1,0 +1,52 @@
+.wd-profile{
+    background-color: white;
+    padding: 0px;
+    margin: 00px;
+    list-style: none;
+    margin-left: 10px;
+    
+    
+}
+.wd-profile li{
+    padding-left: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding-top:10px ;
+}
+
+
+
+.wd-profile a{
+    color: red;
+    text-decoration: none;
+}
+
+.wd-profile button{
+    display: flex;
+    padding-left: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding-top:10px ;
+}
+
+.wd-profile i{
+    width: 15px;
+}
+
+.wd-profile textarea{
+    width: 400px;
+}
+.wd-profile input{
+    width: 400px;
+    padding-left: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding-top:10px ;
+}
+.wd-profile select{
+    width: 400px;
+    padding-left: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding-top:10px ;
+}

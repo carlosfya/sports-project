@@ -1,0 +1,51 @@
+.wd-assignment li{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    border-left: 3px solid green;
+}
+
+.wd-assignment a{
+    text-decoration: none;
+    color: black;
+}
+
+.rounded-element {
+    border-radius: 20px; /* Adjust the value to control the amount of rounding */
+    padding: 20px; /* Optional: add padding for better styling */
+    width: 100px;
+    height: 20px;
+    text-align: center;
+  }
+
+.hello-text {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    padding: 10px; 
+  }
+
+  .content-container {
+    margin-top: 60px; /* Adjust as needed to position below the "hello" text and navigation */
+  }
+
+
+.wd-full{
+    width: 100%;
+}
+.wd-assignment i{
+    margin-left:10px ;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.wd-assignment .list-group-item h3 {
+    flex: 0; /* Do not flex the h3 */
+    margin-right: auto;
+}
+
+.wd-assignment .list-group-item ul {
+    flex: 1; /* Allow the inner ul to flex and take available space */
+}
