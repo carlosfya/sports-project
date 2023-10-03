@@ -9,9 +9,21 @@
         <link rel="stylesheet" href="/kanbas/Courses/Assignments/index.css">
     </head>
     <body>
-        <div class="d-block d-md-none">
-            <a href="/public/kanbas/Courses/CourseNavigation/index.html">a</a>
-            <br>
+        <div class="d-block d-md-none wd-full wd-bg-color-grey wd-flex-row-container wd-home">
+            <a href="/kanbas/Account/index.html">
+                <i class="fa fa-user" style="color: white;" aria-hidden="true"></i>
+                Account                    </a>
+            <a href="/kanbas/Dashboard/index.html">
+                <i class="fa fa-tachometer" aria-hidden="true"></i>
+                Dashboard</a>
+            <a href="/kanbas/Courses/Home/index.html">
+                <i class="fa fa-book" aria-hidden="true"></i>
+                Courses
+            </a>
+            <a href="#">
+                <i class="fa fa-calendar" aria-hidden="true"></i>
+                Calendar
+            </a>
         </div>
         <div class="wd-flex-row-container">
             <div class="wd-bg-color-black d-none d-md-block">
@@ -79,7 +91,7 @@
                     <button class="btn btn-secondary float-end" type="button"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></button>
                     
                     <button class="btn float-end" style="color: green;" type="button">Published</button><br/>
-                    <i class="fa fa-check-circle" aria-hidden="true" style="color: green; right: 0; position: absolute; margin-right: 120px;"></i>
+                    <i class="fa fa-check-circle" aria-hidden="true" style="color: green; right: 0; position: absolute;top: 70px; margin-right: 120px;"></i>
                     <hr/>
                     <h4>Assignment Name</h4>
                     <form action="/kanbas/Courses/Assignments/index.html">
@@ -88,12 +100,12 @@
                     </div>
                     <textarea class = "form-control" cols = "50" rows="10">This is the description of the assignment</textarea>
                     <br />
-                    <div class="wd-flex-row-container">
+                    <div class="wd-flex-row-container" style="margin-left: 100px;">
                         Points: 
                         <input class = "form-control" type="number" max="100" min="0" value="100">
                     </div>
                     
-                    <div class="wd-flex-row-container">
+                    <div class="wd-flex-row-container" style="margin-left: 100px;">
                         Assignment Group
                         <div class="dropdown">
                             <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -107,7 +119,7 @@
                           </div>
                     </div>
                     
-                    <div class="wd-flex-row-container">
+                    <div class="wd-flex-row-container" style="margin-left: 100px;">
                         Display Grade as
                         <div class="dropdown">
                             <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -120,7 +132,7 @@
                           </div>
                     </div>
 
-                    <div class="wd-flex-row-container">
+                    <div class="wd-flex-row-container" style="margin-left: 100px;">
                         Submission Type
                         <div class="dropdown">
                             <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -132,15 +144,44 @@
                             </ul>
                           </div>
                     </div>
-                    
-                    <div class="wd-flex-row-container">
-                        Available From:
-                        <input class = "form-control" type="date" value="2023-09-21" min="2023-09-07" max="2023-09-28"><br/>
-                        Until: <br/>
-                        <input class = "form-control" type="date" value="2023-09-25" min="2023-09-07" max="2023-09-28"><br/>
-                        <button class = "btn">Cancel</button>
-                        <button class = "btn btn-danger">Save</button>
+                    <div style="width: 50%; margin-left: 100px;">
+                            <li class="list-group">
+                                
+                                <ul class="list-group-item">
+                                    <li class="list-group">
+                                        <b>Assign to:</b>
+                                    </li>
+                                    <li class="list-group">
+                                        <input class = "form-control" type="text" placeholder="Everyone">
+                                    </li>
+                                    <li class="list-group">
+                                        <b>Due:</b>
+                                    </li>
+                                    <li class="list-group">
+                                        <li class="list-group"><input class = "form-control" type="date" value="2023-09-25" min="2023-09-07" max="2023-09-28"></li>
+                                    </li>
+                                    <div class="wd-flex-row-container">
+                                        <div style="flex-direction: column;">
+                                            <li class="list-group"> <b>Available From:</b></li>
+                                            <li class="list-group">
+                                                <input class = "form-control" type="date" value="2023-09-21" min="2023-09-07" max="2023-09-28">
+                                            </li>
+                                        </div>
+                                        <div style="flex-direction: column;">
+                                            <li class="list-group"><b> Until:</b></li>
+                                            <li class="list-group"><input class = "form-control" type="date" value="2023-09-25" min="2023-09-07" max="2023-09-28"></li>
+                                        </div>
+                                    </div>
+                                    <button class="form-control" style="text-align: center; background-color: rgb(209, 200, 200);">Add</button>
+                                </ul>
+                            </li>
+             
                     </div>
+                    <div class="wd-flex-row-container" style="right: 10; position: absolute;">
+                        <button class = "btn float-end">Cancel</button>
+                        <button class = "btn btn-danger float-end">Save</button>
+                    </div>
+
                     </form>
                 </div>
     </body>

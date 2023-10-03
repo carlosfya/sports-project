@@ -9,9 +9,21 @@
         <link rel="stylesheet" href="/kanbas/Courses/Assignments/index.css">
     </head>
     <body>
-        <div class="d-block d-md-none">
-            <a href="/public/kanbas/Courses/CourseNavigation/index.html">a</a>
-            <br>
+        <div class="d-block d-md-none wd-full wd-bg-color-grey wd-flex-row-container wd-home">
+            <a href="/kanbas/Account/index.html">
+                <i class="fa fa-user" style="color: white;" aria-hidden="true"></i>
+                Account                    </a>
+            <a href="/kanbas/Dashboard/index.html">
+                <i class="fa fa-tachometer" aria-hidden="true"></i>
+                Dashboard</a>
+            <a href="/kanbas/Courses/Home/index.html">
+                <i class="fa fa-book" aria-hidden="true"></i>
+                Courses
+            </a>
+            <a href="#">
+                <i class="fa fa-calendar" aria-hidden="true"></i>
+                Calendar
+            </a>
         </div>
         <div class="wd-flex-row-container">
             <div class="wd-bg-color-black d-none d-md-block">
@@ -84,39 +96,67 @@
                 <div >
                     <ul class="list-group">
                         <li class="list-group-item-secondary" style="background-color: grey; color: white;">
-                            <h3 style="margin-left: 10px;">Assignments
-                                <button class="btn btn-secondary float-end" type="button"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></button> 
-                                <input type="text" class="float-end rounded-element" style="color: black;" value="40%">
+                            <div class="wd-flex-row-container">
+                                <i class="fa fa-bars" aria-hidden="true"></i>
+                                <h3 style="margin-left: 10px;">Assignments
+                                <button class="btn btn-secondary float-end" type="button" style="position: absolute; right: 0;"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></button> 
+                                <input type="text" class="float-end rounded-element" style="color: black;background-color: rgb(192, 169, 169);position: absolute; right: 20;" value="40%">
+                            </div>
                             </h3> 
                             <div  class="wd-assignment" style="width: 100%;">
                                 <ul class="list-group" style="width: 100%;">
                                     <li class="list-group-item">
                                         <i class="fa fa-bars" aria-hidden="true"></i>
                                         <i class="fa fa-pencil-square-o" aria-hidden="true" style="color: blue;"></i>
-                                        <a href="/kanbas/Courses/Assignments/AssignmentEditor/editor.html"><h4>A1-ENV + HTML</h4></a>
-                                        <i class="fa fa-check-circle" aria-hidden="true" style="color: green; right: 0; position: absolute; margin-right: 20px;"></i>
-                                        <i class="fa fa-ellipsis-v" aria-hidden="true" style="margin-right: 10px; right: 0; position: absolute;"></i>  
-                                    
-                                    </li>
-                                    <li class="list-group-item">
-                                        <i class="fa fa-bars" aria-hidden="true"></i>
-                                        <i class="fa fa-pencil-square-o" aria-hidden="true" style="color: blue;"></i>
-                                        <a href="/kanbas/Courses/Assignments/AssignmentEditor/editor.html"><h4>A2 - CSS + BOOTSTRAP</h4></a>
-                                        <i class="fa fa-check-circle" aria-hidden="true" style="color: green; right: 0; position: absolute; margin-right: 20px;"></i>
-                                        <i class="fa fa-ellipsis-v" aria-hidden="true" style="margin-right: 10px; right: 0; position: absolute;"></i>  
-                                    </li>
-                                    <li class="list-group-item">
-                                        <i class="fa fa-bars" aria-hidden="true"></i>
-                                        <i class="fa fa-pencil-square-o" aria-hidden="true" style="color: blue;"></i>
-                                        <a href="/kanbas/Courses/Assignments/AssignmentEditor/editor.html"><h4>A3 - JS + REACT</h4></a>
+                                        <div>
+                                            <a href="/kanbas/Courses/Assignments/AssignmentEditor/editor.html"><h4><b>A1-ENV + HTML</b></h4></a>
+                                            <label style="color: grey;">
+                                                Not available until Oct 4 at 2:45 p.m. Oct 4 at 2:45 p.m.
+                                                Delivery date Oct 4 at 4:00 p.m. Oct 4 at 4:00 p.m.
+                                                -/32 points</label>
+                                        </div>
+
                                         <i class="fa fa-check-circle" aria-hidden="true" style="color: green; right: 0; position: absolute; margin-right: 20px;"></i>
                                         <i class="fa fa-ellipsis-v" aria-hidden="true" style="margin-right: 10px; right: 0; position: absolute;"></i>  
                                     </li>
                                     <li class="list-group-item">
                                         <i class="fa fa-bars" aria-hidden="true"></i>
                                         <i class="fa fa-pencil-square-o" aria-hidden="true" style="color: blue;"></i>
-                                        <a href="/kanbas/Courses/Assignments/AssignmentEditor/editor.html"><h4>
-                                            A4 - STATE + REDUX</h4></a>
+                                        <div>
+                                            <a href="/kanbas/Courses/Assignments/AssignmentEditor/editor.html"><h4><b>A2 - CSS + BOOTSTRAP</b></h4></a>
+                                            <label style="color: grey;">
+                                            
+Delivery date Oct 4 at 11:59 p.m. Oct 4 at 11:59 p.m.
+-/100 points
+                                            </label>
+                                        </div>                                        <i class="fa fa-check-circle" aria-hidden="true" style="color: green; right: 0; position: absolute; margin-right: 20px;"></i>
+                                        <i class="fa fa-ellipsis-v" aria-hidden="true" style="margin-right: 10px; right: 0; position: absolute;"></i>  
+                                    </li>
+                                    <li class="list-group-item">
+                                        <i class="fa fa-bars" aria-hidden="true"></i>
+                                        <i class="fa fa-pencil-square-o" aria-hidden="true" style="color: blue;"></i>
+                                        <div>
+                                            <a href="/kanbas/Courses/Assignments/AssignmentEditor/editor.html"><h4><b>A3 - JS + REACT</b></h4></a>
+                                            <label style="color: grey;">
+                                                Delivery date Oct 16 at 11:59 p.m. Oct 16 at 11:59 p.m.
+                                                -/100 points
+                                            </label>
+                                        </div>
+                                        <i class="fa fa-check-circle" aria-hidden="true" style="color: green; right: 0; position: absolute; margin-right: 20px;"></i>
+                                        <i class="fa fa-ellipsis-v" aria-hidden="true" style="margin-right: 10px; right: 0; position: absolute;"></i>  
+                                    </li>
+                                    <li class="list-group-item">
+                                        <i class="fa fa-bars" aria-hidden="true"></i>
+                                        <i class="fa fa-pencil-square-o" aria-hidden="true" style="color: blue;"></i>
+                                        <div>
+                                            <a href="/kanbas/Courses/Assignments/AssignmentEditor/editor.html"><h4>
+                                                <b>A4 - STATE + REDUX</b></h4></a>
+                                            <label style="color: grey;">
+                                                Not available until Oct 23 at 0:00 Oct 23 at 0:00
+Delivery date Oct 27 at 11:59 p.m. Oct 27 at 11:59 p.m.
+-/106 points
+                                            </label>
+                                        </div>
                                             <i class="fa fa-check-circle" aria-hidden="true" style="color: green; right: 0; position: absolute; margin-right: 20px;"></i>
                                         <i class="fa fa-ellipsis-v" aria-hidden="true" style="margin-right: 10px; right: 0; position: absolute;"></i>  
                                     </li>

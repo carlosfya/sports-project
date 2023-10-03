@@ -7,11 +7,24 @@
         <link rel="stylesheet" href="/vendors/bootstrap/bootstrap.min.css">
         <link rel="stylesheet" href="/kanbas/Account/index.css">
         <link rel="stylesheet" href="/kanbas/Account/Profile/index.css">
+        <link rel="stylesheet" href="/kanbas/Courses/Home/index.css">
     </head>
     <body>
-        <div class="d-block d-md-none">
-            <a href="/public/kanbas/Courses/CourseNavigation/index.html">a</a>
-            <br>
+        <div class="d-block d-md-none wd-full wd-bg-color-grey wd-flex-row-container wd-home">
+            <a href="/kanbas/Account/index.html">
+                <i class="fa fa-user" style="color: white;" aria-hidden="true"></i>
+                Account                    </a>
+            <a href="/kanbas/Dashboard/index.html">
+                <i class="fa fa-tachometer" aria-hidden="true"></i>
+                Dashboard</a>
+            <a href="/kanbas/Courses/Home/index.html">
+                <i class="fa fa-book" aria-hidden="true"></i>
+                Courses
+            </a>
+            <a href="#">
+                <i class="fa fa-calendar" aria-hidden="true"></i>
+                Calendar
+            </a>
         </div>
         <div class="wd-flex-row-container">
             <div class="wd-bg-color-black d-none d-md-block">
@@ -41,7 +54,12 @@
                 </ul>
             </div>
             <div>
-                <ul class="wd-account-navigation d-none d-md-block">
+                <div class="wd-breadcrumb wd-home" style="margin-left: 10px;">
+                    <i class="fa fa-bars" aria-hidden="true" style="position: absolute;top: 3px;left: 1px; color: red;"></i>
+                    <b style="margin-left: 20px;">Carlos Fernandez-Yanez Arce</b>
+                    <hr/>
+                </div>
+                <ul class="wd-account-navigation d-none d-md-block wd-top">
                     <li><a href="#">Notifications</a></li>
                     <li class="wd-active"><a href="/kanbas/Account/Profile/index.html">Profile</a></li>
                     <li><a href="#">Files</a></li>
@@ -53,7 +71,7 @@
                     <li><a href="#">Global Announcements</a></li>
                 </ul>
             </div>
-            <div class="wd-profile">
+            <div class="wd-profile wd-top" style="width: 100%;">
                 <table = class="table">
                     <td>
                         <i class="fa fa-user fa-5x" aria-hidden="true"></i>

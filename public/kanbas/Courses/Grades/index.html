@@ -5,19 +5,36 @@
         <link rel="stylesheet" href="/kanbas/Courses/CourseNavigation/index.css">
         <link rel="stylesheet" href="/vendors/fontawesome/css/font-awesome.css">
         <link rel="stylesheet" href="/vendors/bootstrap/bootstrap.min.css">
+        <link rel="stylesheet" href="/kanbas/Courses/Home/index.css">
+        <link rel="stylesheet" href="/kanbas/Courses/Assignments/index.css">
     </head>
     <body>
-
-        <div style="display: flex ;">
-            <div class="wd-bg-color-black">
+        <div class="d-block d-md-none wd-full wd-bg-color-grey wd-flex-row-container wd-home">
+            <a href="/kanbas/Account/index.html">
+                <i class="fa fa-user" style="color: white;" aria-hidden="true"></i>
+                Account                    </a>
+            <a href="/kanbas/Dashboard/index.html">
+                <i class="fa fa-tachometer" aria-hidden="true"></i>
+                Dashboard</a>
+            <a href="/kanbas/Courses/Home/index.html">
+                <i class="fa fa-book" aria-hidden="true"></i>
+                Courses
+            </a>
+            <a href="#">
+                <i class="fa fa-calendar" aria-hidden="true"></i>
+                Calendar
+            </a>
+        </div>
+        <div class="wd-flex-row-container">
+            <div class="wd-bg-color-black d-none d-md-block">
                 <ul class = "wd-kanbas-navigation">
                     <li><a href="/kanbas/Account/index.html">
-                        <i class="fa fa-user" aria-hidden="true"></i>
+                        <i class="fa fa-user" style="color: white;" aria-hidden="true"></i>
                         Account                    </a></li>
                     <li><a href="/kanbas/Dashboard/index.html">
                         <i class="fa fa-tachometer" aria-hidden="true"></i>
                         Dashboard</a></li>
-                    <li class="wd-active"><a href="/kanbas/Courses/CourseNavigation/index.html">
+                    <li class="wd-active"><a href="/kanbas/Courses/Home/index.html">
                         <i class="fa fa-book" aria-hidden="true"></i>
                         Courses
                     </a></li>
@@ -35,96 +52,122 @@
                     <li><a href="#"><i class="fa fa-question-circle-o" aria-hidden="true"></i>Help</a></li>
                 </ul>
             </div>
-            <div><ul class="wd-course-navigation">
-                <li><a href="/kanbas/Courses/Home/index.html">Home</a></li>
-                <li><a href="/kanbas/Courses/Modules/index.html">Modules</a></li>
-                <li><a href="/kanbas/Courses/Piazza/index.html">Piazza</a></li>
-                <li><a href="#">Zoom Meetings</a></li>
-                <li><a href="/kanbas/Courses/Assignments/index.html">Assignments</a></li>
-                <li><a href="#">Quizzes</a></li>
-                <li class="wd-active"><a href="/kanbas/Courses/Grades/index.html">Grades</a></li>
-                <li><a href="#">People</a></li>
-                <li><a href="#">Panopto Video</a></li>
-                <li><a href="#">Discussions</a></li>
-                <li><a href="#">Announcements</a></li>
-                <li><a href="#">Pages</a></li>
-                <li><a href="#">Files</a></li>
-                <li><a href="#">Rubries</a></li>
-                <li><a href="#">Outcomes</a></li>
-                <li><a href="#">Collaborations</a></li>
-                <li><a href="#">Syllabus</a></li>
-                <li><a href="#">Settings</a></li>
-                
-            </ul> </div>
-            <div><select>
-                    <option>Gradebook</option>
-                </select>
-                <button>import</button>
-                <select>
-                    <option>Export</option>
-                </select>
-                <button>Configure</button>
+            <div class="wd-flex-row-container wd-full">
+                <div class="wd-breadcrumb wd-home" style="margin-left: 10px;">
+                    <i class="fa fa-bars" aria-hidden="true" style="position: absolute;top: 3px;left: 1px;"></i>
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item"><a href="#">CS4500</a></li>
+                      <li class="breadcrumb-item active" aria-current="page">Grades</li>
+                    </ol>
+                  </nav>
+                    <hr/>
+                </div>
+                <div class="content-container">
+                    <ul class="wd-course-navigation d-none d-md-block">
+                    <li><a href="/kanbas/Courses/Home/index.html">Home</a></li>
+                    <li><a href="/kanbas/Courses/Modules/index.html">Modules</a></li>
+                    <li ><a href="/kanbas/Courses/Piazza/index.html">Piazza</a></li>
+                    <li><a href="#">Zoom Meetings</a></li>
+                    <li><a href="/kanbas/Courses/Assignments/index.html">Assignments</a></li>
+                    <li><a href="#">Quizzes</a></li>
+                    <li  class="wd-active"><a href="/kanbas/Courses/Grades/index.html">Grades</a></li>
+                    <li><a href="#">People</a></li>
+                    <li><a href="#">Panopto Video</a></li>
+                    <li><a href="#">Discussions</a></li>
+                    <li><a href="#">Announcements</a></li>
+                    <li><a href="#">Pages</a></li>
+                    <li><a href="#">Files</a></li>
+                    <li><a href="#">Rubries</a></li>
+                    <li><a href="#">Outcomes</a></li>
+                    <li><a href="#">Collaborations</a></li>
+                    <li><a href="#">Syllabus</a></li>
+                    <li><a href="#">Settings</a></li>
+                    
+                </ul> </div>
 
 
-                <table>
-    <tr>
-        <td>
-            <h3>Student names</h3>
-            <input type="text" name="" id="">
-        </td>
-        <td>
-            <h3>Assignment names</h3>
-            <input type="text" name="" id="">
-        </td>
-        <td>
-            <button>Apply filters</button>
-        </td>
-    </tr>
-                </table>
-                <div class="table-responsive">
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>Student Name</th>
-                        <th>A1 SETUP Out of 100</th>
-                        <th>A2 HTML Out of 100</th>
-                        <th>A3 CSS Out of 100</th>
-                        <th>A4 BOOTSTRAP Out of 100</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>Harry Styles</td>
-                        <td><input type="number" value="80" max="100" min="0"></td>
-                        <td>60</td>
-                        <td>90</td>
-                        <td>95</td>
-                    </tr>
-                    <tr>
-                        <td>Ivan Ortiz</td>
-                        <td>10</td>
-                        <td><input type="number" value="20" max="100" min="0"></td>
-                        <td>60</td>
-                        <td>90</td>
-                    </tr>
-                    <tr>
-                        <td>Alex Rossi</td>
-                        <td>95</td>
-                        <td>100</td>
-                        <td><input type="number" value="90" max="100" min="0"></td>
-                        <td>70</td>
-                    </tr>
-                    <tr>
-                        <td>Chris Williams</td>
-                        <td><input type="number" value="95" max="100" min="0"></td>
-                        <td>100</td>
-                        <td>90</td>
-                        <td>60</td>
-                    </tr>
-                    </tbody>
-                 </table></div>
-        </div>
+
+
+                <div class="wd-top wd-full" >
+                    <div>
+                        <button class="btn float-end" style="background-color: rgb(199, 194, 194);"><i class="fa fa-cog" aria-hidden="true"></i></button>
+                        <button class="btn dropdown-toggle float-end" style="background-color: rgb(199, 194, 194);">  
+                            <i class="fa fa-download" aria-hidden="true"></i>
+                            Export</button>
+                        <button class="btn float-end" style="background-color: rgb(199, 194, 194);">
+                            <i class="fa fa-cloud-upload" aria-hidden="true"></i>
+                            Import</button>
+                    </div>
+                    <table class="table">
+                        <tr>
+                            <td>
+                                <h4><b>Student Names</b></h4>
+                                <div class="wd-flex-row-container">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                    <input type="text" class="form-control" placeholder="Search Students" name="" id="">
+                                </div>
+                            </td>
+                            <td>
+                                <h4><b>Assignment Names</b></h4>
+                                <div class="wd-flex-row-container">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                    <input type="text" class="form-control" placeholder="Search Assignments" name="" id="">
+                                </div>
+                            </td> 
+                        </tr>
+                    </table>
+                    
+                    <button class="btn" style="background-color: rgb(202, 195, 195);"> 
+                        <i class="fa fa-filter" aria-hidden="true"></i>
+                        Apply filters</button>
+                    <div class="table-responsive" style="margin-top: 20px;">
+                        <table class="table table-striped">
+                            <thead class="table-dark">
+                            <tr>
+                                <th>Student Name</th>
+                                <th>A1 SETUP Out of 100</th>
+                                <th>A2 HTML Out of 100</th>
+                                <th>A3 CSS Out of 100</th>
+                                <th>A4 BOOTSTRAP Out of 100</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td style="color: red;">Harry Styles</td>
+                                <td><input class="form-control" type="number" value="80" max="100" min="0"></td>
+                                <td>60</td>
+                                <td>90</td>
+                                <td>95</td>
+                            </tr>
+                            <tr>
+                                <td style="color: red;">Ivan Ortiz</td>
+                                <td>10</td>
+                                <td><input class="form-control" type="number" value="20" max="100" min="0"></td>
+                                <td>60</td>
+                                <td>90</td>
+                            </tr>
+                            <tr>
+                                <td style="color: red;">Alex Rossi</td>
+                                <td>95</td>
+                                <td>100</td>
+                                <td><input class="form-control" type="number" value="90" max="100" min="0"></td>
+                                <td>70</td>
+                            </tr>
+                            <tr>
+                                <td style="color: red;">Chris Williams</td>
+                                <td><input class="form-control" type="number" value="95" max="100" min="0"></td>
+                                <td>100</td>
+                                <td>90</td>
+                                <td>60</td>
+                            </tr>
+                            </tbody>
+                         </table>
+                    </div>
+                </div>
     </body>
 </html>
+
+
 
 

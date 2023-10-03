@@ -21,6 +21,8 @@ body *{
 { background-color: green; }
 .wd-bg-color-black
 { background-color: black; }
+.wd-bg-color-grey
+{ background-color: rgb(85, 83, 83); }
 
 .wd-flex-row-container{
     display: flex;
