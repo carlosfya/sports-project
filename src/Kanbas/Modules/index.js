@@ -10,9 +10,8 @@ function Modules() {
           Publish All
         </button>
         <ul className="dropdown-menu">
-          <li><a className="dropdown-item" href="#">Action</a></li>
-          <li><a className="dropdown-item" href="#">Another action</a></li>
-          <li><a className="dropdown-item" href="#">Something else here</a></li>
+          <li>Action</li>
+          
         </ul>
       </div>
       <button className="btn btn-secondary float-end">Collapse All</button>

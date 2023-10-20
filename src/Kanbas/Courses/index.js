@@ -14,7 +14,7 @@ import "./index.css";
 function Courses() {
   const { courseId } = useParams();
   const {pathname} = useLocation();
-  const [empty, kanbas, courses, id, screen] = pathname.split("/");
+  const [screen] = pathname.split("/");
   const course = db.courses.find((course) => course._id === courseId);
   const linkToIconMap = {
     BsFillMenuButtonWideFill: <BsFillMenuButtonWideFill className="wd-icon" />
@@ -28,7 +28,7 @@ function Courses() {
                  {linkToIconMap["BsFillMenuButtonWideFill"]}
                 </Link>
             </li>
-            <li className="breadcrumb-item"><a href="#">{course.number}</a></li>
+            <li className="breadcrumb-item">{course.number}</li>
             <li>Courses {course.name} / </li>
             <li class="breadcrumb-item active" aria-current="page">{screen}</li>
             </ol>

@@ -76,25 +76,25 @@ function Status() {
       
       <ul className="list-group-item wd-specific">
         <li className="list-group-item">
-          <a href="#">
-            <i className="fa fa-calendar-check-o" aria-hidden="true"></i>Lecture
-          </a>
+          <p style={{color: "red"}}>Lecture</p>
+           
+          
         </li>
         <li className="list-group-item">
           <label style={{color: "grey"}}>CS4550.12631.202410 Sep 7 at 11:45am</label>
         </li>
         <li className="list-group-item">
-          <a href="#">
-            <i className="fa fa-calendar-check-o" aria-hidden="true"></i>CS4550.12631.202410
-          </a>
+        <p style={{color: "red"}}>   CS4550.12631.202410</p>
+        
+     
         </li>
         <li className="list-group-item">
           <label style={{color: "grey"}}>CS4550.12631.202410 Sep 11 at 11:45am</label>
         </li>
         <li className="list-group-item">
-          <a href="#">
-            <i className="fa fa-calendar-check-o" aria-hidden="true"></i>CS5610.06.SP23
-          </a>
+        <p style={{color: "red"}}> CS5610.06.SP23</p>
+          
+        
         </li>
         <li className="list-group-item">
           <label style={{color: "grey"}}>CS5610.06.SP23 Lecture Sep 11 at 6pm</label>
