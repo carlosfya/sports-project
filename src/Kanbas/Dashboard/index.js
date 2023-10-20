@@ -19,7 +19,7 @@ function Dashboard() {
         {courses.map((course, index) => (
           <div key={index} className="col">
             <div className="card h-100">
-              <img src="/images/blue.jpg" className="card-img-top" />
+              <img src="/images/blue.jpg" className="card-img-top" alt="Course Image" />
               <div className="card-body">
                 <h5 className="card-title wd-txt-blue">{course.name}</h5>
                 <Link
