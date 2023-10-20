@@ -10,7 +10,7 @@ function Dashboard() {
   };
 
   return (
-    <div style={{marginLeft: "30px"}}>
+    <div style={{marginLeft: "20px"}}>
       <h1>Dashboard</h1>
       <hr/>
       <h2>Published Courses ({courses.length})</h2>
