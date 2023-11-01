@@ -18,6 +18,7 @@ function Modules() {
       <button className="btn btn-secondary float-end">View Progress</button>  
 
       <h1>Modules</h1>
+      <hr/>
       <ModuleList />
     </div>
   );

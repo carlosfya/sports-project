@@ -1,6 +1,5 @@
 import { useParams, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import CourseNavigation from "../CourseNavigation";
-import db from "../Database";
 import Modules from "../Modules";
 import Home from "../Home";
 import Assignments from "../Assignments";
@@ -11,11 +10,11 @@ import { Link } from "react-router-dom";
 import { BsFillMenuButtonWideFill } from "react-icons/bs"; 
 import "./index.css";
 
-function Courses() {
+function Courses({courses}) {
   const { courseId } = useParams();
   const {pathname} = useLocation();
   const [screen] = pathname.split("/");
-  const course = db.courses.find((course) => course._id === courseId);
+  const course = courses.find((course) => course._id === courseId);
   const linkToIconMap = {
     BsFillMenuButtonWideFill: <BsFillMenuButtonWideFill className="wd-icon" />
   };

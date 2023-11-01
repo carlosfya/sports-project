@@ -21,6 +21,7 @@ function Home() {
 
 
         <h1>Home</h1>
+        <hr/>
         <ModuleList />
       </div>
       <div className="col-2"><Status/></div>

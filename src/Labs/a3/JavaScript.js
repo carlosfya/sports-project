@@ -11,13 +11,16 @@ import Spread from "./Spread";
 import Destructing from "./Destructing";
 import FunctionDestructing from "./FunctionDestructing";
 import PathParameters from "./PathParameters";
+import Bnm from "./Bnm";
+
 
 
 function JavaScript() {
    console.log('Hello World!');
    return(
       <div>
-         <h1>JavaScript</h1>
+         <h1>JavaScript</h1> 
+         <Bnm/>
          <VariablesAndConstants/>
          <VariableTypes/>
          <BooleanVariables/>
