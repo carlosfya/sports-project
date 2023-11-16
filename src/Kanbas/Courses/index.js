@@ -9,12 +9,26 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { BsFillMenuButtonWideFill } from "react-icons/bs"; 
 import "./index.css";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
-function Courses({courses}) {
+function Courses() {
+  const URL = "http://localhost:4000/api/courses";
   const { courseId } = useParams();
+  const [course, setCourse] = useState({});
+  const findCourseById = async (courseId) => {
+    const response = await axios.get(
+      `${URL}/${courseId}`
+    );
+    setCourse(response.data);
+  };
+  useEffect(() => {
+    findCourseById(courseId);
+  }, [courseId]);
+
   const {pathname} = useLocation();
   const [screen] = pathname.split("/");
-  const course = courses.find((course) => course._id === courseId);
+  // const course = courses.find((course) => course._id === courseId);
   const linkToIconMap = {
     BsFillMenuButtonWideFill: <BsFillMenuButtonWideFill className="wd-icon" />
   };
