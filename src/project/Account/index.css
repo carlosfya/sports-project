@@ -1,0 +1,14 @@
+.account-container {
+    padding: 0px;
+    width: 100%;
+  }
+.account-title{
+    text-align: center;
+    margin-top: 10px;
+    transition: transform 0.3s;
+}
+
+.account-title:hover {
+    color: grey;
+    transform: scale(1.1); 
+  }

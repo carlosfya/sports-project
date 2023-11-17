@@ -1,97 +1,78 @@
-// Account.js
-
-import React, { useEffect, useState } from 'react';
-import { searchPlayers } from '../Service2';
+import React, { useState } from 'react';
+import "./index.css"
+import { RiAccountCircleLine } from "react-icons/ri";
 
 function Account() {
-  const [teamName, setTeamName] = useState('');
-  const [playerName, setPlayerName] = useState('');
-  const [playerData, setPlayerData] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const [selectedPlayer, setSelectedPlayer] = useState(null);
+  const [userInfo, setUserInfo] = useState({
+    username: 'JohnDoe',
+    email: 'john.doe@example.com',
+  });
 
-  const fetchData = async () => {
-    try {
-      setLoading(true);
-      setError(null);
+  // State to manage form input values
+  const [formValues, setFormValues] = useState({
+    username: userInfo.username,
+    email: userInfo.email,
+  });
 
-      const data = await searchPlayers(teamName, playerName);
-      setPlayerData(data.player);
-
-    } catch (error) {
-      setError('Error fetching data.');
-    } finally {
-      setLoading(false);
-    }
+  // Function to handle form input changes
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormValues({
+      ...formValues,
+      [name]: value,
+    });
   };
-
-  useEffect(() => {
-    if (teamName !== '' && playerName !== '') {
-      fetchData();
-    }
-  }, [teamName, playerName]);
-
-  const handlePlayerClick = (player) => {
-    setSelectedPlayer(player);
+  // Function to handle form submission
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Update user information with the form values
+    setUserInfo({
+      ...userInfo,
+      ...formValues,
+    });
+    // You may want to send a request to the server to update the user's information here
+    alert('Profile updated successfully!');
   };
 
   return (
-    <div>
-      <h2>Player Search</h2>
-
-      <label htmlFor="teamName">Team Name:</label>
-      <input
-        type="text"
-        id="teamName"
-        value={teamName}
-        onChange={(e) => setTeamName(e.target.value)}
-        placeholder="Enter Team Name"
-      />
-
-      <label htmlFor="playerName">Player Name:</label>
-      <input
-        type="text"
-        id="playerName"
-        value={playerName}
-        onChange={(e) => setPlayerName(e.target.value)}
-        placeholder="Enter Player Name"
-      />
-
-      <button onClick={fetchData} disabled={loading}>
-        Search Players
-      </button>
-
-      {loading && <p>Loading...</p>}
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-
-      {playerData && (
-        <div className="row row-cols-1 row-cols-md-3 g-4">
-          {playerData.map((player) => (
-            <div key={player.idPlayer} className="col">
-              <div className="card h-100" onClick={() => handlePlayerClick(player)}>
-                <img src={player.strThumb} className="card-img-top" alt={player.strPlayer} style={{ maxWidth: '100px', maxHeight: '100px' }} />
-                <div className="card-body">
-                  <h5 className="card-title">{player.strPlayer}</h5>
-                  <p className="card-text">{player.strPosition}</p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
-
-      {selectedPlayer && (
-        <div>
-          <h3>Selected Player Information:</h3>
-          <div>
-            <h5>{selectedPlayer.strPlayer}</h5>
-            <p>Position: {selectedPlayer.strPosition}</p>
-            <p>Nationality: {selectedPlayer.strNationality}</p>
-            {/* Add more player information as needed */}
-          </div>
-        </div>
-      )}
+    <div className='account-container'>
+      <h1 className='account-title'>Account</h1>
+      <hr/>
+      <table className='table'>
+          <td>
+            <form onSubmit={handleSubmit}>
+        <label style={{width: '100%'}}>
+          <b> Username:</b>
+          <input
+            style={{backgroundColor:'rgb(206, 199, 199)'}}
+            type="text"
+            name="username"
+            className='form-control'
+            value={formValues.username}
+            onChange={handleInputChange}
+          />
+        </label>
+        <br />
+        <label style={{width: '100%'}}>
+        <b> Email:</b>
+          <input
+            style={{backgroundColor:'rgb(206, 199, 199)'}}
+            type="email"
+            name="email"
+            className='form-control'
+            value={formValues.email}
+            onChange={handleInputChange}
+          />
+        </label>
+        <br />
+        {/* Add more form fields for other user information */}
+        <button type="submit" className='btn btn-secondary'>Update Profile</button>
+            </form>
+          </td>
+          <td style={{textAlign: 'center'}}>
+          <RiAccountCircleLine size={200} />
+          </td>
+      </table>
     </div>
   );
 }

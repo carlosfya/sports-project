@@ -2,7 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import "./index.css";
 
 function NavigationBar() {
-  const links = ["Account", "Sports","Search"];
+  const links = ["Account", "Sports","Search","Players","Events"];
   const { pathname } = useLocation();
 
   return (
