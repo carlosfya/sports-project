@@ -53,7 +53,7 @@ function Players() {
         id="playerName"
         value={playerName}
         onChange={(e) => setPlayerName(e.target.value)}
-        placeholder="Enter"
+        placeholder="Enter Player Nameee"
       />
 
       <button onClick={fetchData} disabled={loading}>

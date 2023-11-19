@@ -35,13 +35,13 @@
   height: 0;
   overflow: hidden;
   pointer-events: none;
-  transition: opacity 0.3s ease-in-out, height 0s linear 0.3s; /* Add height transition */
+  transition: opacity 0.3s ease-in-out, height 0s linear 0.3s; 
 }
 
 .SportsNavigation.active {
   opacity: 1;
   visibility: visible;
-  height: auto; /* Adjust the height property based on your content */
+  height: auto; 
   pointer-events: auto;
-  transition: opacity 0.3s ease-in-out, height 0s linear; /* Adjust height transition */
+  transition: opacity 0.3s ease-in-out, height 0s linear;
 }
