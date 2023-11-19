@@ -7,6 +7,7 @@ import Search from "./Search/index.js";
 import Sports from "./Sports/index.js";
 import { Routes, Route, Link, Navigate } from "react-router-dom";
 
+
 function Project() {
   return (
     <div>
@@ -19,7 +20,7 @@ function Project() {
       <Routes>
         <Route path="/" element={<Navigate to="Account" />} />
         <Route path="/Account" element={<Account />} />
-        <Route path="/Sports" element={<Sports />} />
+        <Route path="/Sports/*" element={<Sports />} />
         <Route path="/Search" element={<Search />} />
         <Route path="/Players" element={<Players/>}/>
         <Route path="/Events" element={<Events/>}/>

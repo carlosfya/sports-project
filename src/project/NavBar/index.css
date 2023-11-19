@@ -16,7 +16,7 @@
 .NavBarLink {
   color: white;
   text-decoration: none;
-  margin-right: 10px;
+  margin-right: 0px;
   padding: 10px;
   transition: background-color 0.3s, color 0.3s, transform 0.3s; /* Add a smooth transition for background color, text color, and transform */
   display: flex;
@@ -27,4 +27,21 @@
   background-color: black;
   color: white;
   transform: scale(1.1); /* Make the elements 10% larger on hover */
+}
+
+.SportsNavigation {
+  opacity: 0;
+  visibility: hidden;
+  height: 0;
+  overflow: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out, height 0s linear 0.3s; /* Add height transition */
+}
+
+.SportsNavigation.active {
+  opacity: 1;
+  visibility: visible;
+  height: auto; /* Adjust the height property based on your content */
+  pointer-events: auto;
+  transition: opacity 0.3s ease-in-out, height 0s linear; /* Adjust height transition */
 }
