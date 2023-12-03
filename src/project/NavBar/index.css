@@ -23,6 +23,11 @@
   align-items: center;
 }
 
+.NavBarLink.active {
+  background-color: rgb(190, 132, 132)
+}
+
+
 .NavBarLink:hover {
   background-color: black;
   color: white;
@@ -45,3 +50,5 @@
   pointer-events: auto;
   transition: opacity 0.3s ease-in-out, height 0s linear;
 }
+
+

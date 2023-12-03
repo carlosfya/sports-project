@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import "./index.css"
 import { RiAccountCircleLine } from "react-icons/ri";
 
+
 function Account() {
+
   const [userInfo, setUserInfo] = useState({
     username: 'JohnDoe',
     email: 'john.doe@example.com',
