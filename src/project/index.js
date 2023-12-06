@@ -4,6 +4,7 @@ import UserDetail from "./Account/users/details.js";
 import UserList from "./Account/users/list.js";
 import Events from "./Events/index.js";
 import NavigationBar from "./NavBar/NavigationBar.js";
+import LiveMatches from "./LiveMatches/index.js";
 import Players from "./Players/index.js";
 import Search from "./Search/index.js";
 import SignIn from "./SignIn/signin.js";
@@ -40,7 +41,7 @@ function Project() {
                 <Route path="/Events" element={<Events/>}/>
                 <Route path="/signin" element={<SignIn/>}/>
                 <Route path="/signup" element={<SignUp/>}/>
-
+                <Route path="/LiveMatches" element={<LiveMatches/>}/>
                 <Route path="/users" element={<UserList/>} />
                 <Route path="/users/:id" element={<UserDetail/>} />
                 <Route path="/Account/:id" element={<Account />} />

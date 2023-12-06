@@ -6,10 +6,9 @@ import { useSelector } from "react-redux";
 
 function NavigationBar() {
   const { currentUser } = useSelector((state) => state.user);
-  //const links = ["account", "Sports", "Search", "Players", "Events","signin","signup"];
   const anomymousScreens = ["signin", "signup"];
-  const signedinScreens = ["account","users"];
-  const anyoneScreens = ["Sports","Search","Players","Events"];
+  const signedinScreens = ["account", "users"];
+  const anyoneScreens = ["Sports", "Search", "Events", "Favorites"]; // Add "Favorites" to the list
   const { pathname } = useLocation();
   const [isSportsHovered, setIsSportsHovered] = useState(false);
 
@@ -32,7 +31,7 @@ function NavigationBar() {
   return (
     <>
       <div className="NavBar">
-      {!currentUser &&
+        {!currentUser &&
           anomymousScreens.map((screen) => (
             <Link
               key={screen}
@@ -64,10 +63,6 @@ function NavigationBar() {
           </Link>
         ))}
       </div>
-
-
-
-
 
       <div
         className={`SportsNavigation ${isSportsHovered ? "active" : ""}`}

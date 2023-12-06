@@ -7,7 +7,7 @@ function App() {
 
          <div  style={{ width: '100%', height: '100%'}} >
          <Routes>
-         <Route path="/"         element={<Navigate to="/project/Account"/>}/>
+         <Route path="/"         element={<Navigate to="/project/signin"/>}/>
           <Route path="/project/*" element={<Project/>}/>
 
         </Routes>
@@ -16,4 +16,5 @@ function App() {
       </HashRouter>
    );
 }
+
 export default App;
