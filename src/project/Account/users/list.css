@@ -1,0 +1,10 @@
+.user-link {
+    text-decoration: none;
+    color: red;
+    transition: color 0.3s ease; /* Smooth transition over 0.3 seconds */
+  }
+  
+  .user-link:hover {
+    color: rgb(88, 3, 3);
+  }
+  

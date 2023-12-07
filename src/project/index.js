@@ -14,39 +14,46 @@ import { Provider } from "react-redux";
 import store from "./store";
 import RootComponent from "./rootComponent";
 import ProtectedRoute from "./protectedRoute";
+import LiveMatches from "./LiveMatches/index.js";
 
 
 function Project() {
   return (
     <Provider store={store}>
-         <RootComponent show={true}>
+        <RootComponent show={true}>
           <div>
             <div>
               
-              <Link to="/project/Account" className="App-title">
+              <Link to="/project/account" className="App-title">
 
                 <h2>Boston Sports</h2>
               </Link>
             </div>
-
-
               <NavigationBar />
               <Routes>
-                <Route path="/" element={<Navigate to="Account" />} />
-                <Route path="/Account" element={<Account />} />
+                <Route path="/" element={<Navigate to="/project/signin" />} />
+                <Route
+                path="/account"
+                element={
+                  <ProtectedRoute>
+                    <Account />
+                  </ProtectedRoute>
+                }
+              />
                 <Route path="/Sports/*" element={<Sports />} />
                 <Route path="/Search" element={<Search />} />
                 <Route path="/Players" element={<Players/>}/>
                 <Route path="/Events" element={<Events/>}/>
                 <Route path="/signin" element={<SignIn/>}/>
                 <Route path="/signup" element={<SignUp/>}/>
+                <Route path="/LiveMatches" element={<LiveMatches/>}/>
 
                 <Route path="/users" element={<UserList/>} />
                 <Route path="/users/:id" element={<UserDetail/>} />
-                <Route path="/Account/:id" element={<Account />} />
+                <Route path="/account/:id" element={<Account />} />
               </Routes>
             </div>
-         </RootComponent>
+            </RootComponent>
     </Provider>
   );
 }

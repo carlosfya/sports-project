@@ -2,7 +2,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Soccer from "./soccer.js";
 import Tennis from "./tennis.js";
 import BasketBall from "./basketball.js";
-import Formula1 from "./formula1.js";
+import Formula1 from "./Formula1/formula1.js";
 
 function Sports(){
     return(

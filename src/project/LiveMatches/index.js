@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { fetchTeamData, IMAGE_TEAM, fetchLiveMatches, fetchPlayers, PLAYER_IMG } from "../SportsService.js";
-import NavBar from "./sideBarNav.js";
-import './Soccer.css'; // Import the CSS file for styling
+import NavBar from "../Sports/sideBarNav.js";
+import '../Sports/Soccer.css';
 
-function Soccer() {
+function LiveMatches() {
   const [teamId, setTeamId] = useState("");
   const [teamData, setTeamData] = useState(null);
   const [liveMatches, setLiveMatches] = useState([]);
@@ -105,23 +105,10 @@ function Soccer() {
             ))}
           </div>
         </div>
-
-        <div className="players">
-          <h2>Players</h2>
-          <div className="player-container">
-            {players.map((player) => (
-              <div key={player.player.id} className="player-card">
-                <img src={PLAYER_IMG(player.player.id)} alt={`Image of ${player.player.name}`} />
-                <p>{player.player.name}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
         {error && <p style={{ color: 'red' }}>{error}</p>}
       </div>
     </div>
   );
 }
 
-export default Soccer;
+export default LiveMatches;

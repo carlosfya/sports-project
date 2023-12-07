@@ -1,19 +1,87 @@
-import * as client from "./client";
-
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import * as followsClient from "../../follows/client";
 import { useSelector } from "react-redux";
+import "./details.css"
+import * as client from "./client";
+import { useNavigate } from "react-router";
+
+function ModalFollowers({ followers, onClose }) {
+  return (
+    <div className="mmodal">
+      <div className="mmodal-content"> 
+        <span className="close" onClick={onClose}>
+          &times;
+        </span>
+        <h2>Followers:</h2>
+        <div className="list-group">
+          {followers.length > 0 ? (
+            <ul>
+              {followers.map((followerData, index) => (
+                <li key={index} className="list-group">
+                  <Link to={`/project/users/${followerData?.follower?._id}`} className="list-group-item">
+                    {followerData?.follower?.username}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p>No followers yet.</p>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ModalFollowing({followers, onClose }) {
+  return (
+    <div className="mmodal">
+      <div className="mmodal-content"> 
+        <span className="close" onClick={onClose}>
+          &times;
+        </span>
+        <h2>Following</h2>
+        <div className="list-group">
+          {followers.length > 0 ? (
+            <ul>
+              {followers.map((followerData, index) => (
+                <li key={index} className="list-group">
+                  <Link to={`/project/users/${followerData?.followed?._id}`} className="list-group-item">
+                    {followerData?.followed?.username}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p>No following yet.</p>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 
 function UserDetail() {
+  const navigate = useNavigate();
   const { currentUser } = useSelector((state) => state.user);
   const { id } = useParams();
   const [user, setUser] = useState({});
   const [followers, setFollowers] = useState([]);
   const [following, setFollowing] = useState([]);
+  const [isFollowing, setIsFollowing] = useState(false);
+  const [showFollowersModal, setShowFollowersModal] = useState(false);
+  const [showFollowingModal, setShowFollowingModal] = useState(false);
+
+  const handleReturn = () => {
+    navigate(-1); // Go back one step in the history
+  };
+
+
   const fetchUser = async () => {
-    const user = await client.findUserById(id);
-    setUser(user);
+    const userData = await client.findUserById(id);
+    setUser(userData);
   };
 
   const followUser = async () => {
@@ -22,70 +90,130 @@ function UserDetail() {
   };
 
   const findFollowers = async () => {
-    const followers = await followsClient.findUsersFollowingUser(id);
-    setFollowers(followers);
+    const followersData = await followsClient.findUsersFollowingUser(id);
+    setFollowers(followersData);
+    const isFollowingUser = followersData.some(data => data.follower?._id === currentUser._id);
+    setIsFollowing(isFollowingUser);
   };
 
   const findFollowing = async () => {
-    const following = await followsClient.findUsersFollowedByUser(id);
-    setFollowing(following);
+    const followingData = await followsClient.findUsersFollowedByUser(id);
+    setFollowing(followingData);
   };
+
   const deleteUserFollowsUser = async () => {
-    const unfollow = await followsClient.deleteUserFollowsUser(currentUser._id,id)
-    console.log(unfollow)
-  }
-  const [isFollowing, setIsFollowing] = useState(false);
+    const unfollow = await followsClient.deleteUserFollowsUser(
+      currentUser._id,
+      id
+    );
+    console.log(unfollow);
+  };
 
   const toggleFollow = async () => {
-    if (isFollowing) {
-      // Unfollow logic
-      await deleteUserFollowsUser();
-    } else {
-      // Follow logic
-      await followUser();
+    try {
+      if (isFollowing) {
+        await deleteUserFollowsUser();
+      } else {
+        await followUser();
+      }
+  
+      // Fetch updated followers after follow/unfollow action
+      const updatedFollowersData = await followsClient.findUsersFollowingUser(id);
+      setFollowers(updatedFollowersData);
+  
+      // Assuming updatedFollowersData is an array
+      const isFollowingUser = updatedFollowersData.some(data => data.follower?._id === currentUser._id);
+      
+      // Now isFollowingUser will be true if the currentUser is following in any entry of updatedFollowersData
+      setIsFollowing(isFollowingUser);
+    } catch (error) {
+      console.error('Error toggling follow:', error);
     }
-    // Toggle the state after the API call
-    setIsFollowing((prevIsFollowing) => !prevIsFollowing);
+  };
+  
+
+  const openFollowersModal = () => {
+    findFollowers();
+    setShowFollowersModal(true);
   };
 
+  const closeFollowersModal = () => {
+    setShowFollowersModal(false);
+  };
+  const openFollowingModal = () => {
+    findFollowing();
+    setShowFollowingModal(true);
+  };
+
+  const closeFollowingModal = () => {
+    setShowFollowingModal(false);
+  };
 
   useEffect(() => {
     fetchUser();
     findFollowers();
     findFollowing();
-    
   }, [id]);
+
   return (
     <div>
-       <button onClick={toggleFollow}>
-      {isFollowing ? 'Unfollow' : 'Follow'}
-       </button>
-      <h1>User Detail</h1>
-      <pre>{JSON.stringify(user, null, 2)}</pre>
-      <h2>Followers</h2>
-      <div className="list-group">
-        {followers.map((follower) => (
-          <Link
-            key={follower?._id}
-            to={`/project/users/${follower?.follower?._id}`}
-            className="list-group-item"
-          >
-            {follower?.follower?.username}
-          </Link>
-        ))}
-      </div>
-      <h2>Following</h2>
-      <div className="list-group">
-        {following.map((followed) => (
-          <Link
-            key={followed?._id}
-            to={`/project/users/${followed?.followed?._id}`}
-            className="list-group-item"
-          >
-            {followed?.followed?.username}
-          </Link>
-        ))}
-      </div>
+
+     <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+  <button className="btn btn-danger" onClick={toggleFollow}>
+    {isFollowing ? "Unfollow" : "Follow"}
+  </button>
+  <h1 style={{ marginLeft: "auto" }}>User Details</h1>
+  <div style={{ marginLeft: "auto", textAlign: "center" }}>
+    <button className="btn btn-primary" onClick={openFollowersModal}>Followers{followers.length}</button>
+    <button className="btn btn-secondary" onClick={openFollowingModal}>Following{following.length}</button>
+  </div>
+</div>
+
+
+
+      <hr />
+
+      <div>
+        <table className="table" >
+          <thead>
+          <tr>
+            <th style={{ textAlign: "center", fontSize: "30px"  }}>
+              <p>Username:</p>
+            </th>
+            <th style={{ textAlign: "center", fontSize: "30px"  }}>
+              <p>FirstName:</p>
+            </th>
+          </tr>
+          <tr>
+            <td style={{ textAlign: "center", fontSize: "30px"  }}>
+              <p>{user.username}</p>
+            </td>
+            <td style={{ textAlign: "center" , fontSize: "30px" }}>
+                <p>{user.firstName}</p> 
+            </td>
+          </tr>
+          </thead>
+        </table>
+    </div>
+
+
+
+
+      {/*<pre>{JSON.stringify(user, null, 2)}</pre>*/}
+   
+      {showFollowersModal && (
+        <ModalFollowers followers={followers} onClose={closeFollowersModal} />
+      )}
+      {showFollowingModal && (
+        <ModalFollowing followers={following} onClose={closeFollowingModal} />
+      )}
+       <button
+        type="button"
+        className="btn btn-primary"
+        onClick={handleReturn}
+      >
+        Return
+      </button>
     </div>
   );
 }

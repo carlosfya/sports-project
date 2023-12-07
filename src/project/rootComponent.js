@@ -11,12 +11,17 @@ function RootComponent({ show, children }) {
       const currentUser = await client.account();
       dispatch(setCurrentUser(currentUser));
       setLoading(false);
-    } catch (error) {}
+    } catch (error) {
+      console.error("Error fetching current user:", error);
+      // You can add additional handling here if needed
+      setLoading(false); // Make sure to set loading to false even in case of an error
+    }
   };
+  
   useEffect(() => {
     fetchCurrentUser();
   }, []);
-
+  console.log(loading)
   return <div>{!loading && children}</div>;
 }
 
