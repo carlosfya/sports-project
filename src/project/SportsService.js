@@ -56,16 +56,19 @@ export const fetchLiveMatches = async () => {
   }
 };
 
-export const fetchPlayers = async () => {
+export const fetchPlayers = async (searchPlayerId, searchSeason) => {
   try {
     if (!KEY) {
       throw new Error("API key is missing.");
     }
 
-    const response = await axios.get("https://v3.football.api-sports.io/players?id=276&season=2019", {
+    const response = await axios.get("https://v3.football.api-sports.io/players/seasons", {
       headers: {
         'x-rapidapi-key': KEY,
         'x-rapidapi-host': 'v3.football.api-sports.io'
+      },
+      params: {
+        search: searchPlayerId,
       },
     });
 
@@ -102,5 +105,99 @@ export const fetchDrivers = async (searchTerm) => {
   } catch (error) {
     console.error('Error fetching driver:', error);
     throw error; // Propagate the error for the calling code to handle
+  }
+};
+
+
+
+const API_KEY = KEY;
+const BASE_URL = 'https://v1.basketball.api-sports.io';
+
+export const fetchBasketballData = async (endpoint, params = {}) => {
+  try {
+    const response = await axios.get(`${BASE_URL}/${endpoint}`, {
+      headers: {
+        'x-rapidapi-key': API_KEY,
+        'x-rapidapi-host': 'v1.basketball.api-sports.io',
+      },
+      params: params,
+    });
+
+    const data = response.data;
+    console.log(data);
+    return data; 
+  } catch (error) {
+    console.error('Error fetching basketball data:', error);
+    throw error;
+  }
+};
+
+
+
+export const fetchBasketballStandings = async (league, season) => {
+  try {
+    const response = await axios.get(`${BASE_URL}/standings`, {
+      headers: {
+        'x-rapidapi-key': API_KEY,
+        'x-rapidapi-host': 'v1.basketball.api-sports.io',
+      },
+      params: {
+        league: league,
+        season: season,
+      },
+    });
+
+    const data = response.data;
+    console.log(data.response);
+    return data;
+  } catch (error) {
+    console.error('Error fetching basketball standings:', error);
+    throw error;
+  }
+};
+
+export const fetchBasketballTeams = async (searchTerm) => {
+  try {
+    if (!API_KEY) {
+      throw new Error("API key is missing.");
+    }
+
+    const response = await axios.get(`${BASE_URL}/teams`, {
+      headers: {
+        'x-rapidapi-key': API_KEY,
+        'x-rapidapi-host': 'v1.basketball.api-sports.io',
+      },
+      params: {
+        search: searchTerm,
+      },
+    });
+
+    const data = response.data;
+    console.log(data.response);
+    return data; 
+  } catch (error) {
+    console.error('Error fetching basketball teams:', error);
+    throw error; 
+  }
+};
+
+export const fetchBasketballGames = async (date) => {
+  try {
+    const response = await axios.get(`${BASE_URL}/games`, {
+      headers: {
+        'x-rapidapi-key': API_KEY,
+        'x-rapidapi-host': 'v1.basketball.api-sports.io',
+      },
+      params: {
+        date: date,
+      },
+    });
+
+    const data = response.data;
+    console.log(data.response);
+    return data;
+  } catch (error) {
+    console.error('Error fetching basketball games:', error);
+    throw error;
   }
 };

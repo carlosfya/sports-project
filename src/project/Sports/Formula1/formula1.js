@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { fetchDrivers } from '../../SportsService'; // Replace with the actual path to your API module
-import { DRIVER_IMG } from '../../SportsService'; // Replace with the actual path to your image module
-import  NavBar from './sideBarNav';
+import { fetchDrivers, DRIVER_IMG } from '../../SportsService'; // Adjust the import paths as needed
+import NavBar from './sideBarNav';
 
 function Formula1() {
   const [searchTerm, setSearchTerm] = useState('');
   const [driverData, setDriverData] = useState(null);
   const [error, setError] = useState(null);
+  const [likedDrivers, setLikedDrivers] = useState({});
 
   const handleSearch = async () => {
     try {
@@ -17,6 +17,16 @@ function Formula1() {
       setDriverData(null);
       setError('Error fetching driver data');
     }
+  };
+
+  const handleLikeClick = (driverId) => {
+    setLikedDrivers({ ...likedDrivers, [driverId]: true });
+  };
+
+  const handleDislikeClick = (driverId) => {
+    const updatedLikes = { ...likedDrivers };
+    delete updatedLikes[driverId];
+    setLikedDrivers(updatedLikes);
   };
 
   return (
@@ -40,10 +50,25 @@ function Formula1() {
           <div>
             <h2>Driver Information</h2>
             {driverData.map((driver) => (
-              <div key={driver.id}>
-                <p>Name: {driver.name}</p>
-                <img src={DRIVER_IMG(driver.id)} alt={`Image of ${driver.name}`} />
-                {/* Add more information as needed */}
+              <div key={driver.id} className="card">
+                <div className="card-body">
+                  <p>Name: {driver.name}</p>
+                  <img src={DRIVER_IMG(driver.id)} alt={`Image of ${driver.firstName} ${driver.lastName}`} />
+                  {/* Add more information as needed */}
+                  <button
+                    onClick={() => handleLikeClick(driver.id)}
+                    className="btn btn-primary like-button"
+                    disabled={likedDrivers[driver.id]}
+                  >
+                    <span role="img" aria-label="heart">❤️</span> {likedDrivers[driver.id] ? 'Liked' : 'Like'}
+                  </button>
+                  <button
+                    onClick={() => handleDislikeClick(driver.id)}
+                    className="btn btn-danger dislike-button"
+                  >
+                    <span role="img" aria-label="thumbs-down">👎</span> Dislike
+                  </button>
+                </div>
               </div>
             ))}
           </div>
