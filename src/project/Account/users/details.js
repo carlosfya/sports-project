@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import "./details.css"
 import * as client from "./client";
 import { useNavigate } from "react-router";
+import * as postsClient from "../../likes/client";
 
 function ModalFollowers({ followers, onClose }) {
   return (
@@ -73,6 +74,16 @@ function UserDetail() {
   const [isFollowing, setIsFollowing] = useState(false);
   const [showFollowersModal, setShowFollowersModal] = useState(false);
   const [showFollowingModal, setShowFollowingModal] = useState(false);
+  const [likedPosts, setLikedPosts] = useState([]);
+
+  const fetchLikedPosts = async () => {
+    try {
+      const likedPostsData = await postsClient.findPostsLikedByUser(id);
+      setLikedPosts(likedPostsData);
+    } catch (error) {
+      console.error('Error fetching liked posts:', error);
+    }
+  };
 
   const handleReturn = () => {
     navigate(-1); // Go back one step in the history
@@ -151,6 +162,7 @@ function UserDetail() {
 
   useEffect(() => {
     fetchUser();
+    fetchLikedPosts(); 
     findFollowers();
     findFollowing();
   }, [id]);
@@ -206,6 +218,21 @@ function UserDetail() {
       )}
       {showFollowingModal && (
         <ModalFollowing followers={following} onClose={closeFollowingModal} />
+      )}
+       <h2>Liked Posts</h2>
+      {likedPosts.length > 0 ? (
+        <ul>
+          {likedPosts.map((post, index) => (
+            <li key={index} className="list-group">
+              {/* Display information about the liked post */}
+              <Link to={`/project/Sports/formula1/drivers/${post.title}`} className="list-group-item">
+                {post.title}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>No liked posts yet.</p>
       )}
        <button
         type="button"

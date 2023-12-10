@@ -104,3 +104,29 @@ export const fetchDrivers = async (searchTerm) => {
     throw error; // Propagate the error for the calling code to handle
   }
 };
+
+export const fetchRaces = async (date) => {
+  try {
+    if (!KEY) {
+      throw new Error("API key is missing.");
+    }
+
+    const response = await axios.get(" https://v1.formula-1.api-sports.io/races", {
+      headers: {
+        'x-rapidapi-key': KEY,
+        'x-rapidapi-host': 'api-formula-1.p.rapidapi.com'
+      },
+      params: {
+        date: date,
+      },
+    });
+
+    const data = response.data;
+    console.log(data.response);
+    // Process and use the live match data as needed in your application
+    return data; // Return the data so that it can be used by the calling code
+  } catch (error) {
+    console.error('Error fetching races:', error);
+    throw error; // Propagate the error for the calling code to handle
+  }
+};

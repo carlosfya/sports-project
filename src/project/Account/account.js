@@ -2,10 +2,13 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
 import * as client from "./users/client";
 import { Link } from "react-router-dom";
-import { RiAccountCircleLine } from "react-icons/ri";
 import "./index.css";
 import * as reducer from "./users/reducer"
 import { useDispatch } from "react-redux";
+
+import { RiAccountCircleLine, RiAdminLine } from "react-icons/ri";
+import { FaUserGraduate, FaUserTie } from "react-icons/fa";
+import { BsFillPersonFill } from "react-icons/bs";
 
 function Account() {
   const { id } = useParams();
@@ -52,7 +55,7 @@ function Account() {
       // For example, you can go back in the browser history
       navigate(-1); // Go back one step in the history
     };
-
+  
 
   useEffect(() => {
     const fetchCurrentUser = async () => {
@@ -64,9 +67,8 @@ function Account() {
         navigate("/project/signin");
       }
     };
-
     if (id) {
-      findUserById(id);
+      findUserById(id); 
     } else {
       fetchCurrentUser();
     }
@@ -79,7 +81,7 @@ function Account() {
     <div style={{ display: "flex", alignItems: "center" }}>
   {currentUser.role === "ADMIN" && (
     <Link to="/project/users" className="btn btn-warning" style={{ marginRight: "auto" }}>
-      All Users
+       <RiAdminLine />All Users
     </Link>
   )}
   <h1 className="account-title" style={{ marginRight: "350px" }}>
@@ -148,7 +150,7 @@ function Account() {
                 />
               </label>
                <button type="button" className="btn btn-secondary" onClick={handleTogglePassword}>
-                {showPassword ? 'Hide Password' : 'Show Password'}
+              {showPassword ? "Hide Password" : "Show Password"}
               </button>
               <br />
               <b> Role:</b>
@@ -158,6 +160,20 @@ function Account() {
                 <option value="FACULTY">Faculty</option>
                 <option value="STUDENT">Student</option>
               </select>
+              <td style={{ textAlign: "center" }}>
+            {currentUser.role === "ADMIN" ? (
+              <RiAdminLine size={50} />
+            ) : (
+              // You can choose different icons based on user roles
+              currentUser.role === "FACULTY" ? (
+                <FaUserTie size={50} />
+              ) : currentUser.role === "STUDENT" ? (
+                <FaUserGraduate size={50} />
+              ) : (
+                <BsFillPersonFill size={50} />
+              )
+            )}
+          </td>
 
               <br />
               {/* Add more form fields for other user information */}
@@ -169,6 +185,7 @@ function Account() {
               <RiAccountCircleLine size={200} />
             </td>
           </table>
+          
 
           {/* Displaying user information */}
           {/*<pre>{JSON.stringify(currentUser, null, 2)}</pre>*/}
