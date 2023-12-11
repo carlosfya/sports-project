@@ -106,17 +106,6 @@ function Soccer() {
           </div>
         </div>
 
-        <div className="players">
-          <h2>Players</h2>
-          <div className="player-container">
-            {players.map((player) => (
-              <div key={player.player.id} className="player-card">
-                <img src={PLAYER_IMG(player.player.id)} alt={`Image of ${player.player.name}`} />
-                <p>{player.player.name}</p>
-              </div>
-            ))}
-          </div>
-        </div>
 
         {error && <p style={{ color: 'red' }}>{error}</p>}
       </div>

@@ -1,25 +1,33 @@
 import axios from "axios";
+
 const request = axios.create({
   withCredentials: true,
 });
 
-const LIKES_API = "http://localhost:4000/api";
-
-export const findAllLikes = async () => {
-  const response = await request.get(`${LIKES_API}/likes`);
-  return response.data;
-};
-export const createUserLikesAlbum = (userId, albumId) => {
-  const response = request.post(
-    `${LIKES_API}/users/${userId}/likes/${albumId}`
+export const createUserLikesPost = async (postId, title) => {
+  const response = await request.post(
+    `http://localhost:4000/api/users/likes/${postId}/title/${title}`
   );
   return response.data;
 };
-export const findAlbumsUserLikes = (userId) => {
-  const response = request.get(`${LIKES_API}/users/${userId}/likes`);
+
+export const deleteUserLikesPost = async (userId,postId) => {
+  const response = await request.delete(
+    `http://localhost:4000/api/users/${userId}/likes/${postId}`
+  );
   return response.data;
 };
-export const findUsersWhoLikeDriver = (albumId) => {
-  const response = request.get(`${LIKES_API}/albums/${albumId}/likes`);
+
+export const findUsersLikedPost = async (userId) => {
+  const response = await request.get(
+    `http://localhost:4000/api/users/${userId}/likes`
+  );
+  return response.data;
+};
+
+export const findPostsLikedByUser = async (userId) => {
+  const response = await request.get(
+    `http://localhost:4000/api/users/${userId}/likes`
+  );
   return response.data;
 };

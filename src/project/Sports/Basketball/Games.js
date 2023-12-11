@@ -12,7 +12,7 @@ const BasketballGamesByDate = () => {
       try {
         const response = await axios.get('https://v1.basketball.api-sports.io/games', {
           headers: {
-            'x-rapidapi-key': '21fb160e60fd0c8a05cb75b96098220e',
+            'x-rapidapi-key': 'feac8fdccaa610af443a9ed801385f14',
             'x-rapidapi-host': 'v1.basketball.api-sports.io',
           },
           params: {
