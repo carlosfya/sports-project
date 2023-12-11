@@ -4,7 +4,7 @@ const request = axios.create({
   withCredentials: true,
 });
 
-const API_URL = process.env.REACT_APP_BASE_API_URL;
+const API_URL = process.env.REACT_APP_BASE_API_BASE;
 const USERT_API = `${API_URL}/users`;
 
 export const signIn = async (credentials) => {
