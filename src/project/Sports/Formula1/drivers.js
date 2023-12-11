@@ -5,6 +5,8 @@ import NavBar from './sideBarNav';
 import * as client from '../../likes/client';
 import { useSelector } from 'react-redux';
 import { useParams, Link,useNavigate  } from 'react-router-dom';
+import './driver.css';
+import TopBarNav from './topbar';
 
 function Formula1() {
   const navigate = useNavigate();
@@ -18,6 +20,12 @@ function Formula1() {
 
   const likeOrDislikePost = async (driverId, driverName) => {
     try {
+      if (!currentUser) {
+        // If the user is not logged in, navigate to the sign-in screen
+        navigate('/project/signin'); // Replace '/path-to-sign-in' with your actual sign-in path
+        return;
+      }
+
       if (likedDrivers.includes(String(driverId))) {
         await disLikePost(driverId);
       } else {
@@ -66,6 +74,7 @@ function Formula1() {
     }
   };
   
+  
 
   useEffect(() => {
     const loadLikedDrivers = async () => {
@@ -91,8 +100,7 @@ function Formula1() {
     };
 
     loadLikedDrivers();
-    fetchData();
-  }, [currentUser._id, driverTitle]);
+    fetchData();}, [currentUser?._id, driverTitle]);
 
   useEffect(() => {
     // Retrieve the search term from URL parameters on component mount
@@ -110,8 +118,16 @@ function Formula1() {
   }, [driverData, navigate]);
 
   return (
-    <div style={{ display: 'flex' }}>
-      <NavBar />
+    <div className="flex-container">
+    {/* Conditionally render either the sidebar or the top bar */}
+    <div className="d-none d-md-block">
+        <NavBar />
+      </div>
+
+      {/* Top bar component visible on small screens */}
+      <div className="d-block d-md-none wd-full wd-bg-color-grey wd-flex-row-container wd-home">
+        <TopBarNav />
+      </div>
 
       <div style={{ flex: 1, padding: '20px' }}>
         <h1>Drivers</h1>

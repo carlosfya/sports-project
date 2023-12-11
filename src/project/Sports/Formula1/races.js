@@ -5,7 +5,7 @@ import './Races.css';
 import { Link } from 'react-router-dom';
 
 function Races() {
-  const [date, setDate] = useState('');
+  const [date, setDate] = useState('2023-03-05');
   const [raceData, setRaceData] = useState(null);
   const [error, setError] = useState(null);
   const raceDates = ['2023-03-05', '2023-03-19', '2023-04-02', '2023-04-30', '2023-05-07']; // Add more dates as needed

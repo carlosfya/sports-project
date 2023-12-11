@@ -8,7 +8,7 @@ import { BsFillCalendar2WeekFill } from "react-icons/bs";
 import { MdLiveTv } from "react-icons/md";
 
 function NavBar() {
-  const links = ["LiveMatches", "Players", "Events"];
+  const links = ["LiveMatches", "Players"];
   const linkToIconMap = {
     LiveMatches: <MdLiveTv className="wd-icon" />,
     Players: <BiUserCircle className="wd-icon" />,

@@ -1,0 +1,25 @@
+/* driver.css */
+
+/* Default styles for larger screens */
+.flex-container {
+    display: flex;
+  }
+  
+  /* Styles for smaller screens */
+  @media (max-width: 767px) {
+    /* Hide the sidebar on smaller screens */
+    .d-none.d-md-block {
+      display: none;
+    }
+  
+    /* Show the top bar on smaller screens */
+    .d-block.d-md-none {
+      display: block;
+    }
+  
+    /* Adjust styles for smaller screens */
+    .flex-container {
+      display: block; /* Change to block layout on smaller screens */
+    }
+  }
+  

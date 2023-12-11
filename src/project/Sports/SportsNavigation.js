@@ -7,7 +7,7 @@ import { IoMdTennisball, IoMdFootball } from 'react-icons/io';
 import "./SportsNavBar.css";
 
 function SportsNavigation() {
-  const links = ["soccer", "basketball", "formula1", "tennis"];
+  const links = ["soccer", "basketball", "formula1"];
   const { pathname } = useLocation();
 
   const iconMap = {

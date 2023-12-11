@@ -157,18 +157,14 @@ function Account() {
               <select className= "form-control" value={currentUser.role} onChange={handleInputChange} name = 'role'>
                 <option value="USER">User</option>
                 {currentUser.role === 'ADMIN' && <option value="ADMIN">Admin</option>}
-                <option value="FACULTY">Faculty</option>
-                <option value="STUDENT">Student</option>
               </select>
               <td style={{ textAlign: "center" }}>
             {currentUser.role === "ADMIN" ? (
               <RiAdminLine size={50} />
             ) : (
               // You can choose different icons based on user roles
-              currentUser.role === "FACULTY" ? (
-                <FaUserTie size={50} />
-              ) : currentUser.role === "STUDENT" ? (
-                <FaUserGraduate size={50} />
+           currentUser.role === "USER" ? (
+            <BsFillPersonFill size={50} />
               ) : (
                 <BsFillPersonFill size={50} />
               )

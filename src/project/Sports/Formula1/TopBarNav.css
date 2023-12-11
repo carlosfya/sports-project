@@ -1,0 +1,29 @@
+/* TopBarNav.css */
+
+.wd-kanbas-navigation {
+  display: flex;
+  width: 150px;
+  justify-content: space-between; /* Ensure space between items */
+}
+
+.list-group-item {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  padding: 10px;
+  color: #333; /* Set your desired text color */
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.list-group-item:hover {
+  background-color: #f0f0f0; /* Set your desired background color on hover */
+}
+
+.list-group-item.active {
+  background-color: #ddd; /* Set your desired background color for the active item */
+}
+
+.list-group-item svg {
+  margin-right: 10px; /* Add spacing between icon and text */
+}

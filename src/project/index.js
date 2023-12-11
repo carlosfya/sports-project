@@ -26,7 +26,7 @@ function Project() {
               
               <Link to="/project/account" className="App-title">
 
-                <h2>Boston Sports</h2>
+                <h2>All In One Sports</h2>
               </Link>
             </div>
               <NavigationBar />

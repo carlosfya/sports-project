@@ -90,33 +90,13 @@ function Soccer() {
                       <p>Final Score</p>
                     )}
                   </div>
-                  <button
-                    onClick={() => handleLikeClick(match.id)}
-                    className="btn btn-primary like-button"
-                    disabled={likedMatches[match.id]}
-                  >
-                    <span role="img" aria-label="heart">❤️</span> {likedMatches[match.id] ? 'Liked' : 'Like'}
-                  </button>
-                  <button onClick={() => handleDislikeClick(match.id)} className="btn btn-danger dislike-button">
-                    <span role="img" aria-label="thumbs-down">👎</span> Dislike
-                  </button>
+            
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="players">
-          <h2>Players</h2>
-          <div className="player-container">
-            {players.map((player) => (
-              <div key={player.player.id} className="player-card">
-                <img src={PLAYER_IMG(player.player.id)} alt={`Image of ${player.player.name}`} />
-                <p>{player.player.name}</p>
-              </div>
-            ))}
-          </div>
-        </div>
 
         {error && <p style={{ color: 'red' }}>{error}</p>}
       </div>

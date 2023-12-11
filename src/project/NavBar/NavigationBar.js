@@ -11,7 +11,7 @@ function NavigationBar() {
   const { currentUser } = useSelector((state) => state.user);
   const anomymousScreens = ["signin", "signup"];
   const signedinScreens = ["account", "users"];
-  const anyoneScreens = ["Sports", "Search", "Players", "Events"];
+  const anyoneScreens = ["Sports"];
   const { pathname } = useLocation();
   const [isSportsHovered, setIsSportsHovered] = useState(false);
 

@@ -118,22 +118,36 @@ function UserList() {
           </tr>
           {currentUser.role === 'ADMIN' ? (
   <tr>
-    <td>
-      <input value={user.username} onChange={(e) => setUser({ ...user, username: e.target.value })}/>
-      <input value={user.password} onChange={(e) => setUser({ ...user, password: e.target.value })}/>
-    </td>
-    <td>
-      <input value={user.firstName} onChange={(e) => setUser({ ...user, firstName: e.target.value })}/>
-    </td>
-    <td>
-      <input value={user.lastName} onChange={(e) => setUser({ ...user, lastName: e.target.value })}/>
-    </td>
+  <td>
+  <input
+    placeholder="Username"
+    value={user.username}
+    onChange={(e) => setUser({ ...user, username: e.target.value })}
+  />
+  <input
+    placeholder="Password"
+    value={user.password}
+    onChange={(e) => setUser({ ...user, password: e.target.value })}
+  />
+</td>
+<td>
+  <input
+    placeholder="First Name"
+    value={user.firstName}
+    onChange={(e) => setUser({ ...user, firstName: e.target.value })}
+  />
+</td>
+<td>
+  <input
+    placeholder="Last Name"
+    value={user.lastName}
+    onChange={(e) => setUser({ ...user, lastName: e.target.value })}
+  />
+</td>
     <td>
       <select value={user.role} onChange={(e) => setUser({ ...user, role: e.target.value })}>
         <option value="USER">User</option>
         <option value="ADMIN">Admin</option>
-        <option value="FACULTY">Faculty</option>
-        <option value="STUDENT">Student</option>
       </select>
     </td>
     <td className="text-nowrap">

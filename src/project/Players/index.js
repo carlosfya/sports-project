@@ -9,8 +9,10 @@ function Players() {
   const [players, setPlayers] = useState([]);
   const [likedMatches, setLikedMatches] = useState({});
   const [error, setError] = useState(null);
-  const [searchPlayerId, setSearchPlayerId] = useState("");
-  const [searchSeason, setSearchSeason] = useState("");
+  const [selectedPlayerId, setSelectedPlayerId] = useState(""); // New state for selected player ID
+  const [selectedSeason, setSelectedSeason] = useState(""); // New state for selected season
+  const [playerIds, setPlayerIds] = useState(Array.from({ length: 300 }, (_, i) => (i + 1).toString())); // Generate player IDs from 1 to 300
+  const [seasons, setSeasons] = useState(["2017", "2018", "2019", "2020"]); // Array of available seasons
 
   useEffect(() => {
     const fetchData = async () => {
@@ -19,7 +21,7 @@ function Players() {
         setLiveMatches(liveMatchesData.response);
 
         // Fetch players data with initial values
-        const playersData = await fetchPlayers(searchPlayerId, searchSeason);
+        const playersData = await fetchPlayers(selectedPlayerId, selectedSeason);
         setPlayers(playersData.response);
       } catch (error) {
         setError(error.message);
@@ -27,7 +29,7 @@ function Players() {
     };
 
     fetchData();
-  }, [searchPlayerId, searchSeason]);
+  }, [selectedPlayerId, selectedSeason]);
 
   useEffect(() => {
     if (teamId) {
@@ -63,7 +65,7 @@ function Players() {
 
   const handleSearchPlayers = async () => {
     try {
-      const playersData = await fetchPlayers(searchPlayerId, searchSeason);
+      const playersData = await fetchPlayers(selectedPlayerId, selectedSeason);
       setPlayers(playersData.response);
       setError(null);
     } catch (error) {
@@ -84,18 +86,32 @@ function Players() {
         <div className="search-players">
           <h2>Search Players</h2>
           <div className="search-form">
-            <input
-              type="text"
-              placeholder="Player ID"
-              value={searchPlayerId}
-              onChange={(e) => setSearchPlayerId(e.target.value)}
-            />
-            <input
-              type="text"
-              placeholder="Season"
-              value={searchSeason}
-              onChange={(e) => setSearchSeason(e.target.value)}
-            />
+            {/* Player ID Dropdown */}
+            <select
+              value={selectedPlayerId}
+              onChange={(e) => setSelectedPlayerId(e.target.value)}
+            >
+              <option value="">Select Player ID</option>
+              {playerIds.map((id) => (
+                <option key={id} value={id}>
+                  {id}
+                </option>
+              ))}
+            </select>
+            
+            {/* Season Dropdown */}
+            <select
+              value={selectedSeason}
+              onChange={(e) => setSelectedSeason(e.target.value)}
+            >
+              <option value="">Select Season</option>
+              {seasons.map((season) => (
+                <option key={season} value={season}>
+                  {season}
+                </option>
+              ))}
+            </select>
+
             <button onClick={handleSearchPlayers} className="btn btn-primary">
               Search
             </button>
@@ -106,9 +122,9 @@ function Players() {
           <h2>Players</h2>
           <div className="player-container">
             {players.map((player) => (
-              <div key={player.player.id} className="player-card">
-                <img src={PLAYER_IMG(player.player.id)} alt={`Image of ${player.player.name}`} />
-                <p>{player.player.name}</p>
+              <div key={player?.player?.id} className="player-card">
+                <img src={PLAYER_IMG(player?.player?.id)} alt={`Image of ${player?.player?.name}`} />
+                <p>{player?.player?.name}</p>
               </div>
             ))}
           </div>
